@@ -16,15 +16,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     Context context;
     String tabTitles[] = new String[]{"List", "Map"};
 
-//    public PagerAdapter(FragmentManager fm, int NumOfTabs) {
-//        super(fm);
-//        this.mNumOfTabs = NumOfTabs;
-//    }
-
-    public PagerAdapter(FragmentManager fm, Context context) {
+    public PagerAdapter(FragmentManager fm, int mNumOfTabs) {
         super(fm);
-        this.context = context;
+        this.mNumOfTabs = mNumOfTabs;
     }
+
 
     @Override
     public Fragment getItem(int position) {
@@ -34,17 +30,19 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 Fragment listTab = new BarFragment();
                 return listTab;
             case 1:
-                Fragment tab2 = new GenerateMapFragment();
+                Fragment tab2 = new BeerMap();
                 return tab2;
 
             default:
                 return null;
         }
+
+
     }
 
     @Override
     public int getCount() {
-        return tabTitles.length;
+        return mNumOfTabs;
     }
 
     @Override

@@ -1,12 +1,7 @@
 package com.mahoneyapps.tapitfinal;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
@@ -85,23 +80,7 @@ public class GenerateMapFragment extends SupportMapFragment implements OnMapRead
                     .addApi(LocationServices.API)
                     .build();
 
-            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location myLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-            if (myLocation == null){
-                Criteria critera = new Criteria();
-                critera.setAccuracy(Criteria.ACCURACY_FINE);
-                String provider = lm.getBestProvider(critera, true);
-                myLocation = lm.getLastKnownLocation(provider);
-            }
-
-//            LatLng myPos = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
-//            mMap.addMarker(new MarkerOptions().position(myPos).title("You are here!"));
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION);
-
-        }
-        getLocation();
             mMap.setMyLocationEnabled(true);
             mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
             mMap.getUiSettings().setMapToolbarEnabled(false);
