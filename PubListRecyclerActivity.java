@@ -1,11 +1,11 @@
 package com.mahoneyapps.tapitfinal;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,7 @@ public class PubListRecyclerActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "PubListRecyclerActivity";
     public List<Pub> pubsListYo = new ArrayList<>();
+    Context mContext = getApplicationContext();
 
 
     @Override
@@ -31,7 +32,7 @@ public class PubListRecyclerActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new PubRecyclerViewAdapter(pubsListYo);
+        mAdapter = new PubRecyclerViewAdapter(mContext, pubsListYo);
         mRecyclerView.setAdapter(mAdapter);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
         mRecyclerView.addItemDecoration(itemDecoration);
@@ -42,14 +43,15 @@ public class PubListRecyclerActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
-        ((PubRecyclerViewAdapter) mAdapter).setOnItemClickListener(new PubRecyclerViewAdapter.MyClickListener(){
 
-            @Override
-            public void onItemClick(int position, View view) {
-                Log.d(LOG_TAG, " Click on " + position);
-            }
-        });
+        super.onResume();
+//        ((PubRecyclerViewAdapter) mAdapter).setOnItemClickListener(new PubRecyclerViewAdapter.MyClickListener(){
+//
+//            @Override
+//            public void onItemClick(int position, View view) {
+//                Log.d(LOG_TAG, " Click on " + position);
+//            }
+//        });
     }
 
     private void getPubList() {

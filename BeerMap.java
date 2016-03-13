@@ -105,6 +105,9 @@ public class BeerMap extends Fragment implements OnMapReadyCallback,
         addPubToMap(googleMap, "The Malthouse", -41.2935125, 174.7816054, "Pub");
         addPubToMap(googleMap, "The Hop Garden", -41.2971731, 174.7829048, "Pub");
         addPubToMap(googleMap, "The Rogue and Vagabond", -41.2934317, 174.774445, "Pub");
+        addPubToMap(googleMap, "Parrotdog", -41.2968188, 174.780145, "Brewery");
+        addPubToMap(googleMap, "Fork and Brewer", -41.2892497, 174.7756269, "BrewPub");
+        addPubToMap(googleMap, "Little Beer Quarter", -41.2907123, 174.7749561, "Pub");
     }
 
     public GoogleMap addPubToMap(GoogleMap map, String name, double lat, double lng, String snippet) {
@@ -211,7 +214,7 @@ public class BeerMap extends Fragment implements OnMapReadyCallback,
         CameraPosition cameraPosition = CameraPosition.builder()
                 .target(new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude()))
 //                .target(new LatLng(-41.2952851, 174.7678296))
-                .zoom(16f)
+                .zoom(14f)
                 .build();
         Log.d("Camera", String.valueOf(cameraPosition));
 
