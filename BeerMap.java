@@ -48,7 +48,7 @@ public class BeerMap extends Fragment implements OnMapReadyCallback,
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.map_fragment, null, false);
+        View view = inflater.inflate(R.layout.activity_maps, container, false);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
